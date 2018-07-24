@@ -156,9 +156,9 @@ public final class QueryUtils {
 
                 // Code to convert date to display how long ago article was published source: https://stackoverflow.com/questions/35858608/how-to-convert-time-to-time-ago-in-android
                 try {
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
                     sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-                    Date time = sdf.parse(dateTime);
+                    long time = sdf.parse(dateTime).getTime();
                     long now = System.currentTimeMillis();
                     CharSequence ago = DateUtils.getRelativeTimeSpanString(time, now, DateUtils.MINUTE_IN_MILLIS);
                     timeAgo = ago.toString();
@@ -166,15 +166,11 @@ public final class QueryUtils {
                     e.printStackTrace();
                 }
 
-
-
-
-
-//                String dateToDisplay = dateTime.substring(0,10);
-//                String timeToDisplay = dateTime.substring(11, 19);
                 String url = currentNews.getString("webUrl");
                 JSONObject fields = currentNews.getJSONObject("fields");
-                String author = fields.getString("byline");
+                String byline = fields.getString("byline");
+                String author = toTitleCase(byline);
+                Log.i(LOG_TAG, timeAgo);
 
                 newsStories.add(new News(section, title, timeAgo, url, author));
             }
@@ -188,6 +184,18 @@ public final class QueryUtils {
 
         // Return the list of news stories
         return newsStories;
+    }
+
+   //Code courtesy: https://stackoverflow.com/questions/1892765/how-to-capitalize-the-first-character-of-each-word-in-a-string
+    public static String toTitleCase(String givenString) {
+        String[] arr = givenString.split(" ");
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < arr.length; i++) {
+            sb.append(Character.toUpperCase(arr[i].charAt(0)))
+                    .append(arr[i].substring(1)).append(" ");
+        }
+        return sb.toString().trim();
     }
 
 
