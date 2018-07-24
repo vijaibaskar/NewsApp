@@ -10,7 +10,6 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -69,13 +68,11 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
 
         @Override
         public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
-//            Log.i(LOG_TAG, "onCreateLoader is called...");
             return new NewsLoader(this, GUAR_REQUEST_URL);
         }
 
         @Override
         public void onLoadFinished(Loader<List<News>> loader, List<News> newsStories) {
-            //            Log.i(LOG_TAG, "onLoadFinished is called...");
 
             View loadingIndicator = findViewById(R.id.loading_spinner);
             loadingIndicator.setVisibility(View.GONE);
@@ -94,7 +91,6 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
         @Override
         public void onLoaderReset(Loader<List<News>> loader) {
             // TODO: Loader reset, so we can clear out our existing data.
-//            Log.i(LOG_TAG, "onLoaderReset is called...");
             mAdapter.clear();
 
         }

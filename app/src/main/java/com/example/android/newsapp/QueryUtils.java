@@ -18,16 +18,15 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
 public final class QueryUtils {
-    
+
     public static final String LOG_TAG = NewsActivity.class.getName();
 
-    private QueryUtils() { 
-        
+    private QueryUtils() {
+
     }
 
     public static List<News> fetchNewsData(String requestUrl) {
@@ -127,8 +126,8 @@ public final class QueryUtils {
         return output.toString();
     }
 
-    public static List<News> extractFeatureFromJson(String newsJSON) {
-        if (TextUtils.isEmpty(newsJSON)){
+    private static List<News> extractFeatureFromJson(String newsJSON) {
+        if (TextUtils.isEmpty(newsJSON)) {
             return null;
         }
 
@@ -147,7 +146,7 @@ public final class QueryUtils {
             JSONArray newsArray = response.getJSONArray("results");
 
             //looping through all features
-            for (int i =0 ; i < newsArray.length(); i++){
+            for (int i = 0; i < newsArray.length(); i++) {
                 JSONObject currentNews = newsArray.getJSONObject(i);
                 String section = currentNews.getString("sectionName");
                 String title = currentNews.getString("webTitle");
@@ -186,7 +185,7 @@ public final class QueryUtils {
         return newsStories;
     }
 
-   //Code courtesy: https://stackoverflow.com/questions/1892765/how-to-capitalize-the-first-character-of-each-word-in-a-string
+    //Code courtesy: https://stackoverflow.com/questions/1892765/how-to-capitalize-the-first-character-of-each-word-in-a-string
     public static String toTitleCase(String givenString) {
         String[] arr = givenString.split(" ");
         StringBuilder sb = new StringBuilder();

@@ -4,15 +4,13 @@ public class News {
 
     private String mSection;
     private String mTitle;
-    private String mDate;
     private String mTime;
     private String mUrl;
     private String mAuthor;
 
-    public News(String section, String title, String time, String url, String author){
+    public News(String section, String title, String time, String url, String author) {
         mSection = section;
         mTitle = title;
-//        mDate = date;
         mTime = time;
         mUrl = url;
         mAuthor = author;
@@ -24,10 +22,6 @@ public class News {
 
     public String getTitle() {
         return mTitle;
-    }
-
-    public String getDate() {
-        return mDate;
     }
 
     public String getTime() {
