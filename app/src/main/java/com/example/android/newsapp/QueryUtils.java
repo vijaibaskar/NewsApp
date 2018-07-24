@@ -145,7 +145,7 @@ public final class QueryUtils {
             //Getting JSON Array node
             JSONArray newsArray = response.getJSONArray("results");
 
-            //looping through all features
+            //looping through all results
             for (int i = 0; i < newsArray.length(); i++) {
                 JSONObject currentNews = newsArray.getJSONObject(i);
                 String section = currentNews.getString("sectionName");
@@ -166,11 +166,13 @@ public final class QueryUtils {
                 }
 
                 String url = currentNews.getString("webUrl");
-                JSONObject fields = currentNews.getJSONObject("fields");
-                String byline = fields.getString("byline");
-                String author = toTitleCase(byline);
+                String author = "";
+                JSONArray tags = currentNews.getJSONArray("tags");
+                if (tags.length() > 0) {
+                    JSONObject currentTag = tags.getJSONObject(0);
+                    author = currentTag.getString("webTitle");
+                }
                 Log.i(LOG_TAG, timeAgo);
-
                 newsStories.add(new News(section, title, timeAgo, url, author));
             }
 
@@ -184,18 +186,4 @@ public final class QueryUtils {
         // Return the list of news stories
         return newsStories;
     }
-
-    //Code courtesy: https://stackoverflow.com/questions/1892765/how-to-capitalize-the-first-character-of-each-word-in-a-string
-    public static String toTitleCase(String givenString) {
-        String[] arr = givenString.split(" ");
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < arr.length; i++) {
-            sb.append(Character.toUpperCase(arr[i].charAt(0)))
-                    .append(arr[i].substring(1)).append(" ");
-        }
-        return sb.toString().trim();
-    }
-
-
 }

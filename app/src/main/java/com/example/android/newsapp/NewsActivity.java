@@ -24,7 +24,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
     private TextView mEmptyStateTextView;
     private static final int NEWS_LOADER_ID = 1;
 
-    private static final String GUAR_REQUEST_URL = "https://content.guardianapis.com/search?show-fields=thumbnail%2Cbyline&api-key=fbfed1fc-1c50-40b2-8392-d4a19218006c";
+    private static final String GUAR_REQUEST_URL = "https://content.guardianapis.com/search?show-tags=contributor&api-key=fbfed1fc-1c50-40b2-8392-d4a19218006c";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
