@@ -1,5 +1,25 @@
 <resources>
     <string name="app_name">News App</string>
-    <string name="no_data_available">No news found.</string>
+    <string name="no_data_available">No news found. Please close app and reopen.</string>
     <string name="no_internet_connection">No internet connection.</string>
+    <string name="api_key">fbfed1fc-1c50-40b2-8392-d4a19218006c</string>
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">News Settings</string>
+    <string name="settings_number_of_stories_label">Number of stories to display</string>
+    <string name="settings_number_of_stories_key" translatable="false">page-size</string>
+    <string name="settings_number_of_stories_default" translatable="false">10</string>
+
+    <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
+    <string name="settings_order_by_label">Order By</string>
+    <string name="settings_order_by_key" translatable="false">order-by</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_newest_value</string>
+
+    <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_newest_label">Newest</string>
+    <string name="settings_order_by_newest_value" translatable="false">newest</string>
+    <string name="settings_order_by_oldest_label">Oldest</string>
+    <string name="settings_order_by_oldest_value" translatable="false">oldest</string>
+    <string name="settings_order_by_relevance_label">Relevance</string>
+    <string name="settings_order_by_relevance_value" translatable="false">relevance</string>
+
 </resources>
