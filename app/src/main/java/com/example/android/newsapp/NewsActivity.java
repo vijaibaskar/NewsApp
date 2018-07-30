@@ -77,12 +77,14 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         String apiKey = getString(R.string.api_key);
+        String topic = sharedPreferences.getString(getString(R.string.settings_topic_key), getString(R.string.settings_topic_default));
         String orderBy = sharedPreferences.getString(getString(R.string.settings_order_by_key), getString(R.string.settings_order_by_default));
         String numberOfStories = sharedPreferences.getString(getString(R.string.settings_number_of_stories_key), getString(R.string.settings_number_of_stories_default));
 
         Uri baseUri = Uri.parse(GUAR_REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
+        uriBuilder.appendQueryParameter("q", topic);
         uriBuilder.appendQueryParameter("order-by", orderBy);
         uriBuilder.appendQueryParameter("page-size", numberOfStories);
         uriBuilder.appendQueryParameter("api-key", apiKey);

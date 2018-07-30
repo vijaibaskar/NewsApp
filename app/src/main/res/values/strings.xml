@@ -8,6 +8,9 @@
     <string name="settings_number_of_stories_label">Number of stories to display</string>
     <string name="settings_number_of_stories_key" translatable="false">page-size</string>
     <string name="settings_number_of_stories_default" translatable="false">10</string>
+    <string name="settings_topic_label">Search for topic</string>
+    <string name="settings_topic_key" translatable="false">q</string>
+    <string name="settings_topic_default" translatable="false"></string>
 
     <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
     <string name="settings_order_by_label">Order By</string>
